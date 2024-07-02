@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const API_URL = 'https://api.exchangerate-api.com/v4/latest/';
 
-    // Load items from Local Storage
+    // Renderizar a lista dos itens que estão no localStorage
     const loadItems = () => {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         itemList.innerHTML = '';
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    //metodo para realizar o registro dos valores para o localStorage
     const saveItem = (item, index) => {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         if (index !== null && index !== undefined) {
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadItems();
     };
 
+    //remove o registro selecionado do localStorage
     const deleteItem = (index) => {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         items.splice(index, 1);
@@ -72,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadItems();
     };
 
+    //metodo para carregar os registros do item selecionado para os campos e alterar nome do botão salvar.
     const editItem = (index) => {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         const item = items[index];
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButton.style.display = 'inline';
     };
 
+    //reset formulario
     const resetForm = () => {
         itemNameInput.value = '';
         itemDescriptionInput.value = '';
@@ -98,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButton.style.display = 'none';
     };
 
+    //criando evento de listener para o submit no formulario
     itemForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const itemName = itemNameInput.value;

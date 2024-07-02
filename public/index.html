@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,19 +14,19 @@
         <form id="itemForm" class="mb-3">
             <div class="mb-3">
                 <label for="itemName" class="form-label">Nome da Despesa</label>
-                <input type="text" class="form-control" id="itemName" required>
+                <input type="text" class="form-control" id="itemName" placeholder="Informe o nome da despesa"  required>
             </div>
             <div class="mb-3">
                 <label for="itemDescription" class="form-label">Descrição</label>
-                <textarea class="form-control" id="itemDescription" required></textarea>
+                <textarea class="form-control" id="itemDescription" placeholder="Faça uma breve descrição" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="itemQuantity" class="form-label">Quantidade</label>
-                <input type="number" class="form-control" id="itemQuantity" required>
+                <input type="number" class="form-control" id="itemQuantity" placeholder="Quantos foram?" required>
             </div>
             <div class="mb-3">
                 <label for="itemValue" class="form-label">Valor</label>
-                <input type="number" class="form-control" id="itemValue" required>
+                <input type="number" min="0.00" max="10000.00" step="0.01" placeholder="1,000,000.00" class="form-control" id="itemValue" required>
             </div>
             <div class="mb-3">
                 <label for="itemCurrency" class="form-label">Moeda</label>
