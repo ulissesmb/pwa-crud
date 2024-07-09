@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemIdInput = document.getElementById('itemId');
     const saveButton = document.getElementById('saveButton');
     const cancelButton = document.getElementById('cancelButton');
+    const totalValueDiv = document.getElementById('totalValue');
+    const totalConvertedValueDiv = document.getElementById('totalConvertedValue');
+
 
     const API_URL = 'https://api.exchangerate-api.com/v4/latest/';
 
@@ -17,7 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadItems = () => {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         itemList.innerHTML = '';
+        let totalValue = 0;
+        let totalConvertedValue = 0;
         items.forEach((item, index) => {
+            totalValue += parseFloat(item.value);
+            totalConvertedValue += parseFloat(item.convertedValue)
+
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center container';
             listItem.innerHTML = `
@@ -52,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.appendChild(buttonGroup);
             itemList.appendChild(listItem);
         });
+        totalValueDiv.textContent = `Total (Moeda de Origem): ${totalValue.toFixed(2)}`;
+        totalConvertedValueDiv.textContent = `Total (Moeda de Destino/Convertidas): ${totalConvertedValue.toFixed(2)}`;
     };
 
     //metodo para realizar o registro dos valores para o localStorage
